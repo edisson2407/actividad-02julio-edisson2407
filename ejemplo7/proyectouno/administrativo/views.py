@@ -4,8 +4,8 @@ from django.template import RequestContext
 from django.shortcuts import render
 
 # importar las clases de models.py
-from administrativo.models import Matricula, Estudiante
-from administrativo.forms import MatriculaForm, MatriculaEditForm
+from administrativo.models import Matricula, Estudiante, Modulo
+from administrativo.forms import MatriculaForm, MatriculaEditForm, ModuloForm, EstudianteForm
 
 # vista que permita presesentar las matriculas
 # el nombre de la vista es index.
