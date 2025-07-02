@@ -1,0 +1,19 @@
+<h1>{{ mititulo }}</h1>
+<h3>Número de módulos: {{ numero_modulos }}</h3>
+<hr>
+
+<table border="1">
+  <tr>
+    <th>Nombre del Módulo</th>
+    <th>Total de Matrículas ($)</th>
+  </tr>
+  {% for m in modulos %}
+  <tr>
+    <td>{{ m.nombre }}</td>
+    <td>${{ m.total_matriculas }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr>
+<a href="{% url 'index' %}">Inicio</a>

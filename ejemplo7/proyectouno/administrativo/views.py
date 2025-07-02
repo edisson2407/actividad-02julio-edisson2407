@@ -106,25 +106,40 @@ def crear_modulo(request):
     return render(request, 'crearModulo.html', diccionario)    
 
 def ver_modulo(request):
-    """
-    """
-
     modulos = Modulo.objects.all()
 
-    titulo = "Listado de Modulos"
-    informacion_template = {'modulos': modulos,
-    'numero_modulos': len(modulos), 'mititulo': titulo}
-    return render(request, 'detalle_modulo.html', informacion_template)
+    lista_modulos = []
+    for modulo in modulos:
+        total_matriculas = sum(
+            m.costo for m in modulo.lasmatriculas.all() if m.costo
+        )
+
+        lista_modulos.append({
+            'nombre': modulo.get_nombre_display(),
+            'total_matriculas': total_matriculas
+        })
+
+    titulo = "Listado de Módulos"
+    contexto = {
+        'modulos': lista_modulos,
+        'numero_modulos': len(lista_modulos),
+        'mititulo': titulo
+    }
+
+    return render(request, 'detalle_modulo.html', contexto)
+
 
 def ver_estudiantes(request):
-    """
-    """
     estudiantes = Estudiante.objects.all()
 
     titulo = "Listado de Estudiantes"
-    informacion_template = {'estudiante': estudiantes,
-    'numero_estudiantes': len(modulos), 'mititulo': titulo}
-    return render(request, 'lista_estudiantes.html', informacion_template)        
+    informacion_template = {
+        'estudiantes': estudiantes,
+        'numero_estudiantes': len(estudiantes),
+        'mititulo': titulo
+    }
+    return render(request, 'lista_estudiantes.html', informacion_template)
+       
 
         
 # ver los módulos

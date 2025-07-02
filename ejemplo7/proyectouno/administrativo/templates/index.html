@@ -1,9 +1,10 @@
-<h1>{{mititulo}}</h1>
+<h1>{{ mititulo }}</h1>
 <hr>
 <h3>Número de Matriculas {{ numero_matriculas }}</h3>
 <hr>
 [<a href="{% url 'crear_matricula' %}">nuevo</a>]
 <hr>
+
 <table border="1px">
   <tr>
     <th><b>Estudiante</b></th>
@@ -14,15 +15,15 @@
   {% for e in matriculas %}
   <tr>
     <td>
-      {{e.estudiante.nombre}} <br>
-      {{e.estudiante.get_tipo_estudiante_display }}
+      {{ e.estudiante.nombre }} <br>
+      {{ e.estudiante.get_tipo_estudiante_display }}
       [<a href="{% url 'detalle_estudiante' e.estudiante.id %}">+</a>]
     </td>
     <td>
-      {{e.modulo.nombre}}
+      {{ e.modulo.nombre }}
     </td>
     <td>
-      {{e.comentario}}
+      {{ e.comentario }}
     </td>
     <td>
       [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
@@ -30,6 +31,14 @@
     </td>
   </tr>
   {% endfor %}
-
 </table>
+
 <hr>
+
+
+<p>
+  <a href="{% url 'ver_estudiantes' %}">Ver Estudiantes</a> <br>
+  <a href="{% url 'ver_modulo' %}">Ver Módulos</a> <br>
+  <a href="{% url 'crear_estudiante' %}">Crear Estudiante</a> <br>
+  <a href="{% url 'crear_modulo' %}">Crear Módulo</a>
+</p>
