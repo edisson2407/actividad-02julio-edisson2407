@@ -74,6 +74,59 @@ def detalle_estudiante(request, id):
     informacion_template = {'e': estudiante}
     return render(request, 'detalle_estudiante.html', informacion_template)
 
+def crear_estudiante(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = EstudianteForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = EstudianteForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crearEstudiante.html', diccionario)
+
+
+def crear_modulo(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = ModuloForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = ModuloForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crearModulo.html', diccionario)    
+
+def ver_modulo(request):
+    """
+    """
+
+    modulos = Modulo.objects.all()
+
+    titulo = "Listado de Modulos"
+    informacion_template = {'modulos': modulos,
+    'numero_modulos': len(modulos), 'mititulo': titulo}
+    return render(request, 'detalle_modulo.html', informacion_template)
+
+def ver_estudiantes(request):
+    """
+    """
+    estudiantes = Estudiante.objects.all()
+
+    titulo = "Listado de Estudiantes"
+    informacion_template = {'estudiante': estudiantes,
+    'numero_estudiantes': len(modulos), 'mititulo': titulo}
+    return render(request, 'lista_estudiantes.html', informacion_template)        
+
+        
 # ver los módulos
 #    nombre del módulp
 #    valor de todas las matriculas del módulo    

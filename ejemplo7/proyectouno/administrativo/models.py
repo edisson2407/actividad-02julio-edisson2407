@@ -8,6 +8,7 @@ class Estudiante(models.Model):
         ('no-becado', 'Estudiante No Becado'),
         )
 
+
     nombre = models.CharField("Nombre de estudiante", max_length=30)
     apellido = models.CharField(max_length=30)
     cedula = models.CharField(max_length=30, unique=True)
@@ -15,6 +16,7 @@ class Estudiante(models.Model):
     tipo_estudiante = models.CharField(max_length=30, \
             choices=opciones_tipo_estudiante)
     modulos = models.ManyToManyField('Modulo', through='Matricula')
+
 
 
     def __str__(self):
@@ -27,6 +29,8 @@ class Estudiante(models.Model):
     def obtener_matriculas(self):
         return self.lasmatriculas.all()
         
+    def costo_matriculas(self):
+        return sum(matricula.modulo.costo for matricula in self.obtener_matriculas())
 
 class Modulo(models.Model):
     """
@@ -57,7 +61,7 @@ class Matricula(models.Model):
             on_delete=models.CASCADE)
     comentario = models.CharField(max_length=200)
 
-    # Agregar costo
+    costo = models.DecimalField(max_digits = 5,decimal_places = 2,null=True)
 
     def __str__(self):
         return "Matricula: Estudiante(%s) - Modulo(%s)" % \
