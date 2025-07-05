@@ -1,6 +1,13 @@
+{% extends "master.html" %}
 
 
-<h3>Detalle de Matricula</h3>
+{% block title %}
+  Detalle de Matricula
+ {% endblock %}
+
+{% block content %}
+
+<h3>
 
 <b>Nombre:</b> {{matricula.estudiante}}
 </br>
@@ -8,3 +15,6 @@
 
 </br>
 [<a href="{% url 'index' %}">inicio</a>]
+
+
+ {% endblock %}

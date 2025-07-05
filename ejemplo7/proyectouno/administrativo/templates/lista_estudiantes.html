@@ -1,4 +1,13 @@
-<h3>{{ mititulo }}</h3>
+{% extends "master.html" %}
+
+
+{% block title %}
+  {{ mititulo }}
+{% endblock %}
+
+{% block content %}
+
+
 <h4>Número de estudiantes: {{ numero_estudiantes }}</h4>
 
 <table border="1">
@@ -21,3 +30,7 @@
   </tr>
   {% endfor %}
 </table>
+
+
+
+{% endblock %}

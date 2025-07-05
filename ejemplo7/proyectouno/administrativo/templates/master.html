@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">        
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo-topic-listing.css' %}" rel="stylesheet">  
+
+    
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
+  </head>
+  <body id="top">
+
+        <main>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <i class="bi-back"></i>
+                        <span>App Matricula</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a href="{% url 'index' %}" class="nav-link">Inicio</a>
+                            </li>                            
+                            <li class="nav-item">
+                                <a href="{% url 'ver_estudiantes' %}" class="nav-link">Ver Estudiantes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'ver_modulo' %}" class="nav-link">Ver Modulos</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'crear_modulo' %}" class="nav-link">Crear Modulo</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'crear_estudiante' %}" class="nav-link">Crear Estudiante</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'crear_matricula' %}" class="nav-link">Crear Matricula</a>
+                            </li>
+
+                        </ul>
+                        <!--div class="d-none d-lg-block">
+                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                        </div-->
+                    </div>
+                </div>
+            </nav>
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto custom-block bg-white shadow-lg">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+    <footer class="site-footer section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-4 pb-2">
+                    <a class="navbar-brand mb-2" href="{% url 'index' %}">
+                        <i class="bi-back"></i>
+                        <span>App Matricula</span>
+                    </a>
+                </div>
+               
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2025<br>
+                    Edisson Chamba - Sofia Vire. <br>
+                    Todos los derechos reservados.
+                    <br>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/click-scroll.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
+    </body>
+</html>

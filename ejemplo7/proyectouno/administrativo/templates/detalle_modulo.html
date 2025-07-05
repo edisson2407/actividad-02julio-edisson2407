@@ -1,4 +1,13 @@
-<h1>{{ mititulo }}</h1>
+{% extends "master.html" %}
+
+
+{% block title %}
+  {{ mititulo }}
+{% endblock %}
+
+{% block content %}
+
+
 <h3>Número de módulos: {{ numero_modulos }}</h3>
 <hr>
 
@@ -17,3 +26,6 @@
 
 <hr>
 <a href="{% url 'index' %}">Inicio</a>
+
+{% endblock %}
+

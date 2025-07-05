@@ -1,8 +1,16 @@
-<h1>{{ mititulo }}</h1>
+{% extends "master.html" %}
+
+
+{% block title %}
+  {{ mititulo }}
+{% endblock %}
+
+{% block content %}
+
 <hr>
 <h3>Número de Matriculas {{ numero_matriculas }}</h3>
 <hr>
-[<a href="{% url 'crear_matricula' %}">nuevo</a>]
+<a href="{% url 'crear_matricula' %}">nuevo</a>
 <hr>
 
 <table border="1px">
@@ -36,9 +44,7 @@
 <hr>
 
 
-<p>
-  <a href="{% url 'ver_estudiantes' %}">Ver Estudiantes</a> <br>
-  <a href="{% url 'ver_modulo' %}">Ver Módulos</a> <br>
-  <a href="{% url 'crear_estudiante' %}">Crear Estudiante</a> <br>
-  <a href="{% url 'crear_modulo' %}">Crear Módulo</a>
-</p>
+
+
+
+{% endblock %}
